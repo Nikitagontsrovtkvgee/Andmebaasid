@@ -95,3 +95,13 @@ SELECT *
 FROM opilane, Language, keelevalik
 WHERE opilane.opilaneID=keelevalik.opilaneID
 AND Language.ID=keelevalik.Language
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+Vigane kood
+CREATE TABLE oppimine(
+aine varchar(10),
+aasta int,
+opetaja text,
+opilaneID foreign key references ,
+hinne char(1)
+)
