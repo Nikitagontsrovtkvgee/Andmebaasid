@@ -1,0 +1,61 @@
+--AB loomine
+Create database MerkulevaBaas;
+
+use MerkulevaBaas;
+CREATE TABLE opilane(
+OpilaneID int primary key identity(1,1),
+Eesnimi varchar(25) not null,
+Perenimi varchar(25) not null,
+Synniaeg date,
+Stip bit,
+aadress text,
+keskmine_hinne decimal(2,1)
+)
+select * from opilane;
+--andmete lisamine tabelisse
+INSERT INTO opilane(
+eesnimi,
+perenimi,
+Synniaeg,
+Stip,
+keskmine_hinne)
+VALUES(
+'Nikita',
+'Nikita',
+'2000-12-12',
+1,
+4.5),
+(
+'Arnold',
+'schwarzenegger',
+'1947-7-30',
+99999,
+5),
+(
+'Bill',
+'Gates',
+'1955-10-28',
+99999,
+5),
+(
+'Kristofor',
+'Kolumb',
+'1855-11-4',
+99999,
+4),
+(
+'Harry',
+'Potter',
+'1980-3-13',
+99999,
+3.5)
+
+--tabeli kustutamine
+drop table opilane;
+--rida kustutamine, kus on opilaneID=2
+DELETE FROM opilane WHERE opilaneID=2;
+select * from opilane;
+
+--andmete uuendamine
+UPDATE opilane SET aadress='Tartu'
+WHERE opilaneID=3
