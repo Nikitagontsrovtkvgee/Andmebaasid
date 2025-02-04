@@ -125,11 +125,12 @@ CREATE PROCEDURE andmeteUuendamine
 AS
 BEGIN
 SELECT * FROM opilane;
-UPDATE opilane SET opilaneID = @stip = '0';
-WHERE opilaneID=3
+UPDATE opilane
+SET stip = @stip
+WHERE opilaneID=3;
 END
 
-EXEC andmeteUuendamine opilane 3;
+EXEC andmeteUuendamine 0;
 
 --Otsi õpilasi aadressi järgi
 CREATE PROCEDURE opilaneAadressOtsing
