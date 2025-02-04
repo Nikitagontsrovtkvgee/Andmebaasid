@@ -96,7 +96,7 @@ FROM opilane, Language, keelevalik
 WHERE opilane.opilaneID=keelevalik.opilaneID
 AND Language.ID=keelevalik.Language
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
 Vigane kood
 CREATE TABLE oppimine(
 aine varchar(10),
@@ -105,3 +105,38 @@ opetaja text,
 opilaneID foreign key references ,
 hinne char(1)
 )
+
+------------------------------------------------------Protseduurid------------------------------------------------------------
+
+--rida kustutamine, kus on opilaneID=2
+CREATE PROCEDURE kustutaOpilane
+@deleteID INT
+AS
+BEGIN
+DELETE FROM opilane WHERE opilaneID = @deleteID;
+SELECT * FROM opilane;
+END
+  
+EXEC kustutaOpilane 3;
+
+--andmete uuendamine
+CREATE PROCEDURE andmeteUuendamine
+@stip int
+AS
+BEGIN
+SELECT * FROM opilane;
+UPDATE opilane SET opilaneID = @stip = '0';
+WHERE opilaneID=3
+END
+
+EXEC andmeteUuendamine opilane 3;
+
+--Otsi õpilasi aadressi järgi
+CREATE PROCEDURE opilaneAadressOtsing
+@aadress NVARCHAR(50)
+AS
+BEGIN
+SELECT * FROM opilane WHERE aadress = @aadress;
+END
+
+EXEC opilaneAadressOtsing 'Tartu';
