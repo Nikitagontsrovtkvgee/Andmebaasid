@@ -141,3 +141,83 @@ SELECT * FROM opilane WHERE aadress = @aadress;
 END
 
 EXEC opilaneAadressOtsing 'Tartu';
+
+------------------------------------------------------Protseduurid------------------------------------------------------------
+
+CREATE TABLE etteVõtteTulud (
+etteVõtteTuludId int Primary Key identity(1,1),
+saadudRahaSumma varchar(15),
+töötajaPalk char (6),
+rendiKulu varchar (12),
+kindlustusKulu char (8),
+tuluMaks float,
+käibeMaks char(8),
+etteVõttePuhasKasum varchar (15));
+SELECT * FROM etteVõtteTulud;
+
+Insert into ettevõtteTulud(saadudRahaSumma, töötajaPalk, rendikulu, kindlustusKulu, tuluMaks, käibeMaks, ettevõttePuhasKasum)
+Values (3699999, '1200', '20000', '12625', '5600', '23442.62', '130000')
+
+
+CREATE PROCEDURE andmeteUuendamine
+@saadudRahaSumma VARCHAR(15),
+@töötajaPalk CHAR(6),
+@rendikulu VARCHAR(12),
+@kindlustusKulu CHAR(8),
+@tuluMaks FLOAT,
+@käibeMaks CHAR(8),
+@etteVottePuhasKasum VARCHAR(15),
+@etteVotteTuluId INT
+AS
+BEGIN
+UPDATE ettevõtteTulud  
+SET saadudRahaSumma = @saadudRahaSumma,
+töötajaPalk = @töötajaPalk,
+rendikulu = @rendikulu,
+kindlustusKulu = @kindlustusKulu,
+tuluMaks = @tuluMaks,
+käibeMaks = @käibeMaks,
+ettevõttePuhasKasum = CAST(@etteVottePuhasKasum AS VARCHAR(15))
+WHERE ettevõtteTuludId = @etteVotteTuluId;  
+END;
+
+EXEC andmeteUuendamine
+@etteVotteTuluId = 1,
+@saadudRahaSumma = '325869',
+@töötajaPalk = '3769',
+@rendikulu = '1345',
+@kindlustusKulu = '638',
+@tuluMaks = 1120.5,
+@käibeMaks = '1436',
+@etteVottePuhasKasum = '3748';
+
+
+CREATE PROCEDURE andmeteLisamine
+@saadudRahaSumma VARCHAR(15),
+@töötajaPalk CHAR(6),
+@rendikulu VARCHAR(12),
+@kindlustusKulu CHAR(8),
+@tuluMaks FLOAT,
+@käibeMaks CHAR(8),
+@etteVottePuhasKasum VARCHAR(15)
+AS
+BEGIN
+INSERT INTO ettevõtteTulud (saadudRahaSumma, töötajaPalk, rendikulu, kindlustusKulu, tuluMaks, käibeMaks, ettevõttePuhasKasum)
+VALUES (@saadudRahaSumma, @töötajaPalk, @rendikulu, @kindlustusKulu, @tuluMaks, @käibeMaks, @etteVottePuhasKasum);
+END;
+
+EXEC andmeteLisamine
+@saadudRahaSumma = '746896',
+@töötajaPalk = '3648',
+@rendikulu = '4578',
+@kindlustusKulu = '857',
+@tuluMaks = 6074.6,
+@käibeMaks = '3526',
+@etteVottePuhasKasum = '1685';
+
+SELECT * FROM etteVõtteTulud;
+
+CREATE PROCEDURE andmeteKustutamine
+
+AS
+BEGIN
