@@ -15,3 +15,21 @@ Taastamine - восстановление
 päringukeel - язык запроса
 relatsiooni andmebaas - реляционная база данных
 seos - связь
+----------------------------------------------------------------------------------------------------------------------
+Git CMD
+>cd desktop
+>git config --global user.name "Nikita Gontsarov"
+>git config --global user.email "nikitosgoldboss@gmail.com"
+>git config --global --list
+>git clone git@github.com:IrinaMerkulova/TARpv24andmebaasTerms.git
+>cd TARpv24andmebaasTerms
+>git status
+>git branch Nikita
+>git checkout Nikita
+>git status
+>git status
+>git add .
+>git commit -a -m "Nimi on lisatud"
+>git status 
+>git push
+>git push --set-upstream origin Nikita
