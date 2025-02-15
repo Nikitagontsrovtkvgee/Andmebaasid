@@ -106,6 +106,35 @@ END;
 
 EXEC addtehtud @tehtud_kp='6863-4-9', @retsept_id=4
 
+CREATE PROCEDURE addyhik
+    @yhik_nimi VARCHAR(100)
+AS
+BEGIN
+    INSERT INTO yhik (yhik_nimi)
+    VALUES (@yhik_nimi);
+END;
+
+CREATE PROCEDURE addretsept
+    @retsepti_nimi VARCHAR(100),
+    @kirjeldus VARCHAR(200),
+    @juhend VARCHAR(500),
+    @sisestatud_kp DATE,
+    @kasutaja_id INT,
+    @kategooria_id INT
+AS
+BEGIN
+    INSERT INTO retsept (retsepti_nimi, kirjeldus, juhend, sisestatud_kp, kasutaja_id, kategooria_id)
+    VALUES (@retsepti_nimi, @kirjeldus, @juhend, @sisestatud_kp, @kasutaja_id, @kategooria_id);
+END;
+
+CREATE PROCEDURE addtoiduaine
+    @toiduaine_nimi VARCHAR(100)
+AS
+BEGIN
+    INSERT INTO toiduAine (toiduaine_nimi)
+    VALUES (@toiduaine_nimi);
+END;
+
 SELECT * FROM tehtud;
 
 CREATE TABLE hinnad(
