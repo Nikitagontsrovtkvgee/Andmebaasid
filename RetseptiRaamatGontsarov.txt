@@ -118,3 +118,29 @@ VALUES(1.89, 2), (9.88, 4), (4.99, 1), (3.39, 3), (0.99, 5)
 SELECT * FROM hinnad;
 
 CREATE PROCEDURE hindlisamine
+    @hind FLOAT,
+    @retsept_id INT
+AS
+BEGIN
+    INSERT INTO hinnad (hind, retsept_id)
+    VALUES (@hind, @retsept_id);
+END;
+
+CREATE PROCEDURE delete_from_table
+    @table_name NVARCHAR(128)
+AS
+BEGIN
+    DECLARE @sql NVARCHAR(MAX);
+    SET @sql = 'DELETE FROM ' + QUOTENAME(@table_name);
+    EXEC sp_executesql @sql;
+END;
+
+CREATE PROCEDURE   hind uuendamine
+    @hinnad_id INT,
+    @new_hind FLOAT
+AS
+BEGIN
+    UPDATE hinnad
+    SET hind = @new_hind
+    WHERE hinnad_id = @hinnad_id;
+END;
