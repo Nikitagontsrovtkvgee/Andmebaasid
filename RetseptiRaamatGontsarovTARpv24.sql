@@ -9,7 +9,7 @@ Insert into kasutaja(eesnimi, perenimi, email)
 Values ('Medik', 'Iz TF2', 'medik.TF2@edu.ee'),
 ('Mark', 'Mark', 'mark@tthk.ee'),
 ('Roman', 'Roman', 'roman@tthk.ee'),
-('Lenin', 'Lenin', 'lenin.grazdanskajaoborona@edu.ee')
+('Lenin', 'Lenin', 'lenin.grazdanskajaoborona@edu.ee'),
 ('MOP', 'MOPOB', 'BOPOBODOB.MOP@email.com')
 
 SELECT * FROM kasutaja
