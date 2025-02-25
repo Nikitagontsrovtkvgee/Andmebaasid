@@ -86,6 +86,7 @@ SELECT * FROM kategooria;
 SELECT * FROM koostis;
 SELECT * FROM yhik;
 SELECT * FROM toiduAine;
+SELECT * FROM hinnad;
 
 CREATE PROCEDURE addkoostis
 @kogus int,
@@ -168,7 +169,7 @@ BEGIN
     EXEC sp_executesql @sql;
 END;
 
-CREATE PROCEDURE   hind uuendamine
+CREATE PROCEDURE hind_uuendamine
     @hinnad_id INT,
     @new_hind FLOAT
 AS
